@@ -40,8 +40,16 @@ public class TaskServiceImpl implements TaskService{
     private boolean isAdmin() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         // Kiểm tra xem User có quyền ROLE_ADMIN không
+//        return authentication.getAuthorities().stream()
+//                .anyMatch(role -> role.getAuthority().equals("ROLE_ADMIN"));
+//        System.out.println("Authorities của User: " + authentication.getAuthorities());
+//        // END DEBUG
+//
+//        return authentication.getAuthorities().stream()
+//                .anyMatch(role -> role.getAuthority().equals("ROLE_ADMIN"));
         return authentication.getAuthorities().stream()
                 .anyMatch(role -> role.getAuthority().equals("ROLE_ADMIN"));
+
     }
 
     private TaskResponseDto mapToDto(Task task) {

@@ -37,7 +37,7 @@ public class User {
 //    @Enumerated(EnumType.ORDINAL) // Lưu trữ dưới dạng số (ordinal)
 //    @Column(name = "role", nullable = false)
 //    private Role role;
-    @Column(name = "role_id", nullable = false)
+    @Column(name = "role", nullable = false)
     private Integer role;
 
     // status TINYINT: 1 = active, 0 = inactive

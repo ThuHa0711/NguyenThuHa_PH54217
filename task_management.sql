@@ -30,14 +30,14 @@ CREATE TABLE task (
 -- ============================================
 --  INSERT USER DATA
 --  Mật khẩu gốc: 123456
---  BCrypt: $2a$10$Dow1YAlnXrhIRbkIuWGH/urhEMH5e.Ca1v4n1LCMlZFo1ev0oZXy2
 -- ============================================
 
+SET @BCRYPT_PASSWORD = '$2a$10$4Bep5M87Akr15uboISV8BesAs8K4XNRK9Z3rXkwMmRTvcQvGrBh3C';
 INSERT INTO user (username, full_name, password, email, role, status) VALUES
-('admin',        'Nguyễn Thu Hà', 'MTIzNDU2', 'admin@gmail.com',        2, 1),
-('vananguyen01', 'Nguyễn Văn A', 'MTIzNDU2', 'vana@gmail.com',         1, 1),
-('thibnguyen02', 'Trần Thị B', 'MTIzNDU2', 'thib@gmail.com',         1, 1),
-('vancnguyen03', 'Nguyễn Văn C', 'MTIzNDU2', 'vanc@gmail.com',         1, 1);
+('admin',        'Nguyễn Thu Hà', @BCRYPT_PASSWORD, 'admin@gmail.com',        2, 1),
+('vananguyen01', 'Nguyễn Văn A', @BCRYPT_PASSWORD, 'vana@gmail.com',         1, 1),
+('thibnguyen02', 'Trần Thị B', @BCRYPT_PASSWORD, 'thib@gmail.com',         1, 1),
+('vancnguyen03', 'Nguyễn Văn C', @BCRYPT_PASSWORD, 'vanc@gmail.com',         1, 1);
 
 
 -- ============================================
@@ -62,6 +62,11 @@ DELETE FROM user;
 
 -- Reset lại ID về 1 (tùy chọn)
 ALTER TABLE user AUTO_INCREMENT = 1;
+
+DELETE FROM task;
+
+-- Reset lại ID về 1 (tùy chọn)
+ALTER TABLE task AUTO_INCREMENT = 1;
 
 drop database task_management;
 
